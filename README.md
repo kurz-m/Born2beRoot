@@ -22,14 +22,15 @@ apt-get install ssh
 vim /etc/ssh/sshd_config
 ```
 
-Remove the `#` on the line with `Port 22` and change it to 4242.
+- Remove the `#` on the line with `Port 22` and change it to 4242.
+- Furthermore, set 'PermitRootLogin' to `no`
 
 5. Setup the network in virtualbox
 
->> Go to the 'Settings' tab and then on 'network'
->> Click on 'Advanced' and then 'Port Forwarding'
->> Create a new rule with 'TCP' and 'Host Port' and 'Guest Port' being set to '4242'
+- Go to the 'Settings' tab and then on 'network'
+- Click on 'Advanced' and then 'Port Forwarding'
+- Create a new rule with 'TCP' and 'Host Port' and 'Guest Port' being set to '4242'
 
-5. Change to the user 'makurz'
+6. Change to the user 'makurz'
 
 `su - makurz`
