@@ -15,6 +15,21 @@
 > -a stands for append the user to the group
 > -G specifies the groups which the user gets added to
 
-4. Change to the user 'makurz'
+4. Install **SSH** if not installed and change port to 4242
+
+```shell
+apt-get install ssh
+vim /etc/ssh/sshd_config
+```
+
+Remove the `#` on the line with `Port 22` and change it to 4242.
+
+5. Setup the network in virtualbox
+
+> Go to the 'Settings' tab and then on 'network'
+> Click on 'Advanced' and then 'Port Forwarding'
+> Create a new rule with 'TCP' and 'Host Port' and 'Guest Port' being set to '4242'
+
+5. Change to the user 'makurz'
 
 `su - makurz`
