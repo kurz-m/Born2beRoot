@@ -11,9 +11,9 @@ FREERAM=$(free -m | awk '$1 == "Mem:" {print $2}')
 USEDRAM=$(free -m | awk '$1 == "Mem:" {print $3}')
 PERCRAM=$(free  | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}')
 # Get available memory and percentage of utilization
-FREEMEM=$(df --output=source,avail,target -h | grep "^/dev" | grep -v '/boot$' | awk '{ft += $2} END {print ft}')
-USEDMEM=$(df --output=source,used,target -h | grep "^/dev" | grep -v '/boot$' | awk '{ft += $2} END {print ft}')
-PERCMEM=$(df --output=source,pcent,target -h | grep "^/dev" | grep -v '/boot$' | awk '{ft += $2} END {print ft}')
+FREEMEM=$(df --output=source,size -BKB | grep "LVMG" | awk '{ft += $2} END {printf("%.2f", ft/1000000)}')
+USEDMEM=$(df --output=source,used -BKB | grep "LVMG" | awk '{ft += $2} END {printf("%.2f", ft/1000000)}')
+PERCMEM=$(df --output=source,used,size -BKB | grep "LVMG" | awk '{ft2 += $2; ft3 += $3} END {printf("%.2f", ft2/ft3*100)}')
 # Get utilization rate of processors as a percentage
 PERCPROS=$(vmstat 1 2 | awk 'NR == 4 {print 100 - $15}')
 # Date and time of last reebot
@@ -35,6 +35,7 @@ wall "  #Architecture: $ARCHITECTURE
         #Physical CPU: $PHYSICAL
         #Virtual CPU: $VIRTUAL
         #Memory usage: $USEDRAM/${FREERAM}MB ($PERCRAM)
+        #Disk usage: $USEDMEM/${FREEMEM}GB ($PERCMEM%)
         #CPU load: $PERCPROS%
         #Last boot: $LASTBOOT
         #LVM use: $LVMACTIVE
