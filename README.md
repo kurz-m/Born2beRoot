@@ -45,7 +45,7 @@ ufw status
 6. Setup the password policy
 
 - Install libpam-pwquality if not already `apt-get install libpam-pwquality`.
-- Change the file at _/etc/security/pwquality.conf_ according to the [PDF](//).
+- Change the file at _/etc/security/pwquality.conf_ according to the subject.
 - Make sure to include the following line to the _/etc/pam.d/common-password_.
 
 `password   requisite   pam_pwquality.so`
@@ -64,12 +64,32 @@ PASS_WARN_AGE 7
 ```shell
 sudo visudo
 
+# Resets terminal environment to remove any user variable.
 Defaults	env_reset
+# Sends a mail of bad sudo password attempts.
 Defaults	mail_badpass
+# Secure paths for the sudo user.
 Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin"
+# Message because of entering a wrong password.
 Defaults	badpass_message="Computer says no."
+# Max password tried when using sudo.
 Defaults	passwd_tries=3
+# Defining a logfile for commands used with sudo.
 Defaults	logfile="/var/log/sudo.log"
+# Define that input and output should be locked.
 Defaults	log_input, log_output
+# Requires the user to be logged into a terminal to run the sudo command.
 Defaults	requiretty
 ```
+
+8. Add some additional packages for general purpose and for the monitoring script
+
+- only net-tools must be installed for the monitoring.sh to work.
+
+```shell
+# net-tools for basic networking tools (ifconfig, netstat, etc.)
+apt-get install net-tools
+# git for source control (not mandatory)
+apt-get install git
+```
+
