@@ -83,6 +83,12 @@ Defaults	logfile="/var/log/sudo.log"
 Defaults	log_input, log_output
 # Requires the user to be logged into a terminal to run the sudo command.
 Defaults	requiretty
+
+# User privilege specifications (add your user)
+user42  ALL=(ALL:ALL) ALL
+
+# Allow member of group sudo to execute any command (add root for monitoring.sh)
+user42  ALL=(root) NOPASSWD: /usr/local/bin/monitoring.sh
 ```
 
 8. Add some additional packages for general purpose and for the monitoring script
@@ -100,6 +106,23 @@ apt-get install git
 
 ```shell
 touch /usr/local/bin/monitoring.sh
+# Give all permissions to the file to run it
+chmod 777 /usr/local/bin/monitoring.sh
 ```
 
-Add the content from ![this file](./monitoring.sh) into the one on the VM.
+Add the content from [this file](./monitoring.sh) into the one on the VM.
+
+10. Define a cronjob to run the monitoring script every 10 minuts
+
+```shell
+# Call the crontab function with the -u(ser) 'root' and the -e(dit) flag
+crontab -u root -e
+```
+
+Add the following line to the end of the file.
+
+```shell
+# The cronjob gets 5 inputs
+# First is minutes, hour, day (month), month, and day (week)
+*/10 * * * * /usr/local/bin/monitoring.sh
+```
