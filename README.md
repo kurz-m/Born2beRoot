@@ -42,7 +42,7 @@ ufw status
 - Click on 'Advanced' and then 'Port Forwarding'
 - Create a new rule with 'TCP' and 'Host Port' and 'Guest Port' being set to '4242'
 
-6. Setup the password policy
+7. Setup the password policy
 
 - Install libpam-pwquality if not already `apt-get install libpam-pwquality`.
 - Change the file at _/etc/security/pwquality.conf_ according to the subject.
@@ -62,7 +62,17 @@ PASS_MIN_DAYS 2
 PASS_WARN_AGE 7
 ```
 
-7. Change the `sudo` usage policy
+Because this changes will only applied to new created users. Therefore you have to change it manually.
+
+```shell
+# -m for PASS_MIN_DAYS -M for PASS_MAX_DAYS and -W for PASS_WARN_AGE
+chage -m 2 -M 30 -W 7 user42
+# Check if rules have been applied.
+chage -l user42
+```
+
+
+8. Change the `sudo` usage policy
 
 ```shell
 sudo visudo
@@ -91,7 +101,7 @@ user42  ALL=(ALL:ALL) ALL
 user42  ALL=(root) NOPASSWD: /usr/local/bin/monitoring.sh
 ```
 
-8. Add some additional packages for general purpose and for the monitoring script
+9. Add some additional packages for general purpose and for the monitoring script
 
 - only net-tools must be installed for the monitoring.sh to work.
 
@@ -102,7 +112,7 @@ apt-get install net-tools
 apt-get install git
 ```
 
-9. Create a file 'monitoring.sh' in /usr/local/bin/
+10. Create a file 'monitoring.sh' in /usr/local/bin/
 
 ```shell
 touch /usr/local/bin/monitoring.sh
@@ -112,7 +122,7 @@ chmod 777 /usr/local/bin/monitoring.sh
 
 Add the content from [this file](./monitoring.sh) into the one on the VM.
 
-10. Define a cronjob to run the monitoring script every 10 minuts
+11. Define a cronjob to run the monitoring script every 10 minuts
 
 ```shell
 # Call the crontab function with the -u(ser) 'root' and the -e(dit) flag
