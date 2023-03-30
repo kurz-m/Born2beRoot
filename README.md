@@ -48,7 +48,10 @@ ufw status
 - Change the file at _/etc/security/pwquality.conf_ according to the subject.
 - Make sure to include the following line to the _/etc/pam.d/common-password_.
 
-`password   requisite   pam_pwquality.so`
+```
+# Words are spaces with tabs
+password   requisite   pam_pwquality.so
+```
 
 - It takes the changes from _pwquality.conf_ and applies the password policy.
 - Change the file _/etc/login.defs_ and change the following.
@@ -99,4 +102,4 @@ apt-get install git
 touch /usr/local/bin/monitoring.sh
 ```
 
-Add the content from [this file](./monitoring.sh) into the one on the VM.
+Add the content from ![this file](./monitoring.sh) into the one on the VM.
