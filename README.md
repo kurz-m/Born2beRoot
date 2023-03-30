@@ -1,138 +1,133 @@
-# Instructions for Born2beRoot
-The commands can be run from the root user. If you are running the commands
-from a regular user, you have to use sudo for most of the commands to work.
+<h1 align="center">
+    <p>
+        📓 Libft
+    </p>
+</h1>
 
-1. Install sudo on the system.
+<p align="center">
+    <b><i>Repo for the Libft project at 42 Heilbronn</i></b>
+</p>
 
-`apt-get install sudo`
+<p align="center">
+    This repository is coded in&nbsp&nbsp
+    <a href="https://skillicons.dev">
+        <img src="https://skillicons.dev/icons?i=c" />
+    </a>
+     &nbsp&nbspwith&nbsp&nbsp
+    <a href="https://skillicons.dev">
+        <img src="https://skillicons.dev/icons?i=neovim" />
+    </a>
+     &nbsp&nbspand&nbsp&nbsp
+    <a href="https://skillicons.dev">
+        <img src="https://skillicons.dev/icons?i=vscode" />
+    </a>
+</p>
 
-2. Add a group called 'user42'
+---
 
-`groupadd user42`
+## 💾 About
+> The task of the Libft project is to code a C library with basic functions (see below) I can use in later projects of the core curriculum.
 
-3. Add 'makurz' to the groups
+## Table of Contents
+- [Functions](#functions)
+    - [ctype](#ctype)
+    - [stdlib](#stdlib)
+    - [strings](#strings)
+    - [linked list](#linked-list)
+    - [output](#output)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-`usermod -a -G user42,sudo makurz`
+## Functions
+The library contains the following functions categorized by their use.
 
-> -a stands for append the user to the group
-> -G specifies the groups which the user gets added to
+### ctype
+These functions check whether *c*, which must have the value of an
+**unsigned char** or **EOF**, falls into a certain character class.
+1. [isalnum](./src/ft_isalnum.c) - checks for an alphanumeric character
+2. [isalpha](./src/ft_isalpha.c) - checks for an alphabetic character
+3. [isascii](./src/ft_isascii.c) - checks if *c* fits into the ASCII character set
+4. [isdigit](./src/ft_isdigit.c) - checks for a digit (0 through 0)
+5. [isprint](./src/ft_isprint.c) - checks for any printable character including space
+6. [tolower](./src/ft_tolower.c) - converts lowercase letters to uppercase
+7. [toupper](./src/ft_toupper.c) - converts uppercase letters to lowercase
 
-4. Install **SSH** if not installed and change port to 4242
+### stdlib
+1. [atoi](./src/ft_atoi.c) - convert a string to an integer
+2. [calloc](./src/ft_calloc.c) - allocates memory and the allocated memory is set to zero
+3. [itoa](./src/ft_itoa.c) - convert an integer to a string
+
+### strings
+1. [bzero](./src/ft_bzero.c) - zeros n bytes of the memory
+2. [memchr](./src/ft_memchr.c) - scans memory for specified byte
+3. [memcmp](./src/ft_memcmp.c) - compares memory areas
+4. [memcpy](./src/ft_memcpy.c) - copies memory area
+5. [memmove](./src/ft_memmove.c) - copies memory area in a non-destructive manner
+6. [memset](./src/ft_memset.c) - fills memory with a constant byte
+7. [split](./src/ft_split.c) - splits a string at a specified delimiter into a new array of strings
+8. [strchr](./src/ft_strchr.c) - locates first occurrence of a character in a string
+9. [strdup](./src/ft_strdup.c) - duplicates a string into a new string (memory allocated with malloc(3))
+10. [striteri](./src/ft_striteri.c) - applies a function to every character in a string
+11. [strjoin](./src/ft_strjoin.c) - concatenates two strings into a new string (memory allocated with malloc(3))
+12. [strlcat](./src/ft_strlcat.c) - size-bounded string concatenation ('\0'-terminated)
+13. [strlen](./src/ft_strlen.c) - calculates the length of a string
+14. [strmapi](./src/ft_strmapi.c) - creates new string from another string with a function being applied to every character
+15. [strncmp](./src/ft_strncmp.c) - compares specified amount of bytes of two strings
+16. [strnstr](./src/ft_strnstr.c) - locates a substring in a string within a specified amount of bytes
+17. [strrchr](./src/ft_strrchr.c) - locates last occurrence of a character in a string 
+18. [strtrim](./src/ft_strtrim.c) - trims start and end of a string with a specified set of characters
+19. [substr](./src/ft_substr.c) - creates a substring from a string from a specified start and length
+
+### linked list
+1. [lstclear](./src/ft_lstclear.c) - deletes and frees the given nodes and every successor
+2. [lstadd_back](./src/ft_lstadd_back.c) - adds a node at the end of a list
+3. [lstadd_front](./src/ft_lstadd_front.c) - adds a node at the beginning of a list
+4. [lstdelone](./src/ft_lstdelone.c) - deletes the content of a node with a given function and frees the node
+5. [lstiter](./src/ft_lstiter.c) - iterates a list and applies a function to its content
+6. [lstlast](./src/ft_lstlast.c) - returns the last node of a list
+7. [lstmap](./src/ft_lstmap.c) - creates a new list from a given list with a function being applied to its content
+8. [lstnew](./src/ft_lstnew.c) - creates a new node (with malloc(3))
+9. [lstsize](./src/ft_lstsize.c) - counts the number of nodes in a list
+
+### output
+1. [putchar_fd](./src/ft_putchar_fd.c) - outputs a character to the specified file descriptor
+2. [putstr_fd](./src/ft_putstr_fd.c) - outputs a string to the specified file descriptor
+3. [putendl_fd](./src/ft_putendl_fd.c) - outputs a string to the specified file descriptor with an added newline
+4. [putnbr_fd](./src/ft_putnbr_fd.c) - outputs an integer to the specified file descriptor
+
+## Installation
+To install the library, follow these steps:
+1. Clone the repository: 
+```shell
+% git clone https://github.com/kurz-m/Libft.git
+```
+
+2. Navigate to the repository: 
+```shell
+% cd Libft/src
+```
+
+3. Compile the library:
+```shell
+% make all
+```
+
+## 🧰 Usage
+### Instructions
+1. Include the header file
+```C
+#include "libft.h"
+```
+
+2. Link against the compiled library
 
 ```shell
-apt-get install ssh
-vim /etc/ssh/sshd_config
+% cc [your-program.c] -L[path/to/library] -lft
 ```
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request if you would like to contribute.
 
-- Check **SSH** status: `systemctl status ssh`
-- Remove the `#` on the line with `Port 22` and change it to 4242.
-- Furthermore, set 'PermitRootLogin' to `no`
-
-5. Install/enable `ufw` firewall and allow `Port 4242`
-
-```shell
-apt-get install ufw
-ufw allow 4242
-ufw status
-```
-
-6. Setup the network in virtualbox
-
-- Go to the 'Settings' tab and then on 'network'
-- Click on 'Advanced' and then 'Port Forwarding'
-- Create a new rule with 'TCP' and 'Host Port' and 'Guest Port' being set to '4242'
-
-7. Setup the password policy
-
-- Install libpam-pwquality if not already `apt-get install libpam-pwquality`.
-- Change the file at _/etc/security/pwquality.conf_ according to the subject.
-- Make sure to include the following line to the _/etc/pam.d/common-password_.
-
-```
-# Words are spaces with tabs
-password   requisite   pam_pwquality.so
-```
-
-- It takes the changes from _pwquality.conf_ and applies the password policy.
-- Change the file _/etc/login.defs_ and change the following.
-
-```
-PASS_MAX_DAYS 30
-PASS_MIN_DAYS 2
-PASS_WARN_AGE 7
-```
-
-Because this changes will only applied to new created users. Therefore you have to change it manually.
-
-```shell
-# -m for PASS_MIN_DAYS -M for PASS_MAX_DAYS and -W for PASS_WARN_AGE
-chage -m 2 -M 30 -W 7 user42
-# Check if rules have been applied.
-chage -l user42
-```
-
-
-8. Change the `sudo` usage policy
-
-```shell
-sudo visudo
-
-# Resets terminal environment to remove any user variable.
-Defaults	env_reset
-# Sends a mail of bad sudo password attempts.
-Defaults	mail_badpass
-# Secure paths for the sudo user.
-Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/bin:/sbin:/bin"
-# Message because of entering a wrong password.
-Defaults	badpass_message="Computer says no."
-# Max password tried when using sudo.
-Defaults	passwd_tries=3
-# Defining a logfile for commands used with sudo.
-Defaults	logfile="/var/log/sudo.log"
-# Define that input and output should be locked.
-Defaults	log_input, log_output
-# Requires the user to be logged into a terminal to run the sudo command.
-Defaults	requiretty
-
-# User privilege specifications (add your user)
-user42  ALL=(ALL:ALL) ALL
-
-# Allow member of group sudo to execute any command (add root for monitoring.sh)
-user42  ALL=(root) NOPASSWD: /usr/local/bin/monitoring.sh
-```
-
-9. Add some additional packages for general purpose and for the monitoring script
-
-- only net-tools must be installed for the monitoring.sh to work.
-
-```shell
-# net-tools for basic networking tools (ifconfig, netstat, etc.)
-apt-get install net-tools
-# git for source control (not mandatory)
-apt-get install git
-```
-
-10. Create a file 'monitoring.sh' in /usr/local/bin/
-
-```shell
-touch /usr/local/bin/monitoring.sh
-# Give all permissions to the file to run it
-chmod 777 /usr/local/bin/monitoring.sh
-```
-
-Add the content from [this file](./monitoring.sh) into the one on the VM.
-
-11. Define a cronjob to run the monitoring script every 10 minuts
-
-```shell
-# Call the crontab function with the -u(ser) 'root' and the -e(dit) flag
-crontab -u root -e
-```
-
-Add the following line to the end of the file.
-
-```shell
-# The cronjob gets 5 inputs
-# First is minutes, hour, day (month), month, and day (week)
-*/10 * * * * /usr/local/bin/monitoring.sh
-```
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
