@@ -93,3 +93,10 @@ apt-get install net-tools
 apt-get install git
 ```
 
+9. Create a file 'monitoring.sh' in /usr/local/bin/
+
+```shell
+touch /usr/local/bin/monitoring.sh
+```
+
+Add the content from [this file](./monitoring.sh) into the one on the VM.
