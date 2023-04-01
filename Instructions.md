@@ -105,9 +105,6 @@ Defaults	requiretty
 
 # User privilege specifications (add your user)
 user42  ALL=(ALL:ALL) ALL
-
-# 
-user42  ALL=(root) NOPASSWD: /usr/local/bin/monitoring.sh
 ```
 
 9. Add some additional packages for general purpose and for the monitoring script
