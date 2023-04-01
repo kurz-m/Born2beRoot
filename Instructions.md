@@ -75,12 +75,12 @@ chage -l user42
 chage -l root
 ```
 
-
 8. Change the `sudo` usage policy
 
 ```shell
-sudo visudo
-
+visudo
+```
+```
 # Resets terminal environment to remove any user variable.
 Defaults	env_reset
 # Sends a mail of bad sudo password attempts.
@@ -107,24 +107,24 @@ user42  ALL=(root) NOPASSWD: /usr/local/bin/monitoring.sh
 
 9. Add some additional packages for general purpose and for the monitoring script
 
-- only net-tools must be installed for the monitoring.sh to work.
+- only net-tools and bc must be installed for the monitoring.sh to work.
 
 ```shell
 # net-tools for basic networking tools (ifconfig, netstat, etc.)
 apt-get install net-tools
-# git for source control (not mandatory)
-apt-get install git
+# bc for the calculation of an additional script regarding the timing (not mandatory)
+apt-get install bc
 ```
 
 10. Create a file 'monitoring.sh' in /usr/local/bin/
 
 ```shell
 touch /usr/local/bin/monitoring.sh
-# Give all permissions to the file to run it
-chmod 777 /usr/local/bin/monitoring.sh
+# Give execution permissions to the file to run it
+chmod +x /usr/local/bin/monitoring.sh
 ```
 
-Add the content from [this file](./monitoring.sh) into the one on the VM.
+Try to create your own script. If you struggle, you can have a look at [this file](./monitoring.sh) and adjust it to your understanding.
 
 11. Define a cronjob to run the monitoring script every 10 minuts
 
@@ -139,4 +139,14 @@ Add the following line to the end of the file.
 # The cronjob gets 5 inputs
 # First is minutes, hour, day (month), month, and day (week)
 */10 * * * * /usr/local/bin/monitoring.sh
+```
+
+If you want to create an additional script, in order for the script to run every 10th minute after system startup
+you can create something similar to [this](./delay.sh) and extend the cronjob accordingly.
+
+```shell
+# wait 30 seconds after reboot to run the monitoring.sh script
+@reboot sleep 30 && /usr/local/bin/monitoring.sh
+# and then add the delay.sh script in front of the monitoring.sh script
+*/10 * * * * /usr/local/bin/delay.sh && /usr/local/bin/monitoring.sh
 ```
