@@ -1,4 +1,4 @@
-# Instructions for Born2beRoot
+# Initial setup for Born2beRoot
 The commands can be run from the root user. If you are running the commands
 from a regular user, you have to use sudo for most of the commands to work.
 
@@ -14,7 +14,7 @@ from a regular user, you have to use sudo for most of the commands to work.
 
 `usermod -a -G user42,sudo makurz`
 
-> -a stands for append the user to the group
+> -a stands for append the user to the group<br>
 > -G specifies the groups which the user gets added to
 
 4. Install **SSH** if not installed and change port to 4242
@@ -28,6 +28,11 @@ vim /etc/ssh/sshd_config
 
 - Remove the `#` on the line with `Port 22` and change it to 4242.
 - Furthermore, set 'PermitRootLogin' to `no`
+
+After changing the port number you have to restart the SSH service.
+```shell
+systemctl restart ssh
+```
 
 5. Install/enable `ufw` firewall and allow `Port 4242`
 
@@ -101,7 +106,7 @@ Defaults	requiretty
 # User privilege specifications (add your user)
 user42  ALL=(ALL:ALL) ALL
 
-# Allow member of group sudo to execute any command (add root for monitoring.sh)
+# 
 user42  ALL=(root) NOPASSWD: /usr/local/bin/monitoring.sh
 ```
 
