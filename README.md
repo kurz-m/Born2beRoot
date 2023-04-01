@@ -24,7 +24,8 @@
 </h3>
 
 <p align="center">
-    empty
+    Finished: 01/04/2023<br>
+    Grade: 110%
 </p>
 
 ---
