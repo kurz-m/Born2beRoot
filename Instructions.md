@@ -19,12 +19,13 @@ from a regular user, you have to use sudo for most of the commands to work.
 
 4. Install **SSH** if not installed and change port to 4242
 
+- Check **SSH** status: `systemctl status ssh`
+
 ```shell
 apt-get install ssh
 vim /etc/ssh/sshd_config
 ```
 
-- Check **SSH** status: `systemctl status ssh`
 - Remove the `#` on the line with `Port 22` and change it to 4242.
 - Furthermore, set 'PermitRootLogin' to `no`
 
@@ -38,13 +39,13 @@ ufw status
 
 6. Setup the network in virtualbox
 
-- Go to the 'Settings' tab and then on 'network'
+- Go to the 'Settings' tab and then on 'Network'
 - Click on 'Advanced' and then 'Port Forwarding'
 - Create a new rule with 'TCP' and 'Host Port' and 'Guest Port' being set to '4242'
 
 7. Setup the password policy
 
-- Install libpam-pwquality if not already `apt-get install libpam-pwquality`.
+- Install libpam-pwquality if not already installed `apt-get install libpam-pwquality`.
 - Change the file at _/etc/security/pwquality.conf_ according to the subject.
 - Make sure to include the following line to the _/etc/pam.d/common-password_.
 
@@ -62,13 +63,16 @@ PASS_MIN_DAYS 2
 PASS_WARN_AGE 7
 ```
 
-Because this changes will only applied to new created users. Therefore you have to change it manually.
+This changes will only be applied to newly created users. Therefore you have to change it manually for the
+already existing user _login42_ and also for _root_.
 
 ```shell
 # -m for PASS_MIN_DAYS -M for PASS_MAX_DAYS and -W for PASS_WARN_AGE
 chage -m 2 -M 30 -W 7 user42
+chage -m 2 -M 30 -W 7 root
 # Check if rules have been applied.
 chage -l user42
+chage -l root
 ```
 
 
