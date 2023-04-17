@@ -97,7 +97,7 @@ Defaults	badpass_message="Computer says no."
 # Max password tried when using sudo.
 Defaults	passwd_tries=3
 # Defining a logfile for commands used with sudo.
-Defaults	logfile="/var/log/sudo.log"
+Defaults	logfile="/var/log/sudo/sudo.log"
 # Define that input and output should be locked.
 Defaults	log_input, log_output
 # Requires the user to be logged into a terminal to run the sudo command.
