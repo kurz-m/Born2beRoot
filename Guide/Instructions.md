@@ -46,7 +46,7 @@ ufw status
 
 - Go to the 'Settings' tab and then on 'Network'
 - Click on 'Advanced' and then 'Port Forwarding'
-- Create a new rule with 'TCP' and 'Host Port' and 'Guest Port' being set to '4242'
+- Create a new rule with 'TCP' and 'Host Port' and 'Guest Port', both being set to '4242'
 
 7. Setup the password policy
 
@@ -55,7 +55,7 @@ ufw status
 - Make sure to include the following line to the _/etc/pam.d/common-password_.
 
 ```
-# Words are spaces with tabs
+# Words are seperated with tabs
 password   requisite   pam_pwquality.so
 ```
 
@@ -109,7 +109,7 @@ user42  ALL=(ALL:ALL) ALL
 
 9. Add some additional packages for general purpose and for the monitoring script
 
-- only net-tools and bc must be installed for the monitoring.sh to work.
+- only net-tools and bc must be installed for the monitoring.sh to work (also works with other tools if you change the script).
 
 ```shell
 # net-tools for basic networking tools (ifconfig, netstat, etc.)
@@ -118,7 +118,7 @@ apt-get install net-tools
 apt-get install bc
 ```
 
-10. Create a file 'monitoring.sh' in /usr/local/bin/
+10. Create a file 'monitoring.sh' in /usr/local/bin/ (this can be whereever you want your script to be)
 
 ```shell
 touch /usr/local/bin/monitoring.sh
@@ -139,7 +139,7 @@ Add the following line to the end of the file.
 
 ```shell
 # The cronjob gets 5 inputs
-# First is minutes, hour, day (month), month, and day (week)
+# First is minutes, hour, day (of month), month, and day (of week)
 */10 * * * * /usr/local/bin/monitoring.sh
 ```
 
