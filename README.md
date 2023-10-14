@@ -56,5 +56,29 @@ They are not an exhaustive document but give instructions about how you can setu
 Double check if it is running on your system and adjust to your own style of programming. There are always several ways to achieve
 the same goal.
 
-## Other
-I am always open to get some hints for improvements or minor mistakes. Thanks!
+## Disclaimer
+
+This tutorial/repository provides information and code examples that may be useful in certain situations, but it comes with no warranties or guarantees of any kind.
+The information and code provided are for educational and illustrative purposes only.
+
+### Use at Your Own Risk
+
+Please be aware that implementing the solutions or following the instructions provided in this tutorial may not be suitable for all scenarios or may lead to unintended consequences.
+You are responsible for understanding the implications of any changes you make to your own projects, systems, or code based on the information presented here.
+
+### No Liability
+
+The author (me) of this tutorial/repository shall not be held liable for any direct or indirect damages or losses incurred as a result of using,
+modifying, or relying on the information or code provided. This includes, but is not limited to, data loss, system failures, or any other adverse effects.
+
+### Always Test and Back Up
+
+Before applying any changes or solutions presented in this tutorial, it is strongly recommended to thoroughly test them in a controlled environment. Additionally, make sure to back up your data and code to prevent data loss or system instability.
+
+By using this tutorial/repository, you agree to the terms mentioned above and accept all associated risks.
+
+---
+
+**Note**: The information provided here is subject to change, and the author (me) reserve the right to modify or remove content at any time.
+It is your responsibility to check for updates or changes to the content.
+
